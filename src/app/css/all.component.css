@@ -1,0 +1,21 @@
+::ng-deep .grid-main-height .ui-table-scrollable-view .ui-table-scrollable-body {
+  min-height: 350px !important;
+}
+
+::ng-deep .grid-psearch-height .ui-table-scrollable-view .ui-table-scrollable-body {
+  min-height: 290px !important;
+}
+
+::ng-deep .ac-grid-dropdown .ui-autocomplete .ui-autocomplete-input {
+  min-height: 29px !important;
+  min-width: 95% !important;
+}
+
+::ng-deep p-dialog .ui-dialog {
+  z-index: 12500 !important;
+}
+/*
+
+::ng-deep ul.ui-dropdown-items {
+  z-index: 13000 !important;
+} */

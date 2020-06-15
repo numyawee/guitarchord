@@ -1,0 +1,100 @@
+<div class="mainbg">
+  <div>
+    <div id="content-wrapper">
+      <div class="container-fluid" style="padding-top: 5px;padding-left: 15px;">
+
+        <div class="row" style="margin-top: 15px;">
+          <div class="col-xl-11 col-lg-12 col-md-12 col-sm-12 col-12 input-group mb-3 inputWithIconSearch">
+            <div class="input-group-prepend ">
+              <i class="fa fa-search"></i>
+            </div>
+            <input type="text" [formControl]="searchField" class="form-control" placeholder="Search" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <p-table #GridData class="grid-main-height" [value]="ShowSongList()" [autoLayout]="false"
+              [scrollable]="true" scrollHeight="500px"
+              selectionMode="single" dataKey="index" [(selection)]="_selectItem">
+              <ng-template pTemplate="caption">
+                <div class="ui-helper-clearfix">
+                  <button type="button" pButton icon="pi pi-plus" iconPos="left" label="Add" class="gridbuttonheader"
+                    (click)="Add()"></button>
+                  <button type="button" pButton icon="fa fa-ban" iconPos="left" label="Del"
+                    class="gridbuttonheader ui-button-danger" (click)="Del()"></button>
+                </div>
+              </ng-template>
+
+              <ng-template pTemplate="header">
+                <tr>
+                  <th class="gridrowindex"></th>
+                  <th style="width:130px" class="gridheader">ศิลปิน</th>
+                  <th style="width:500px" class="gridheader">ชื่อเพลง</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-item let-i="rowIndex">
+                <tr [pSelectableRow]="item">
+                  <td class="gridrowindex">{{i + 1}}</td>
+                  <td style="width:130px" class="gridcenter">{{item.singer}}</td>
+                  <td style="width:500px" class="gridcenter">
+                    <a href="{{item.link}}" target="blank">{{item.songname}}</a>
+                  </td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br/>
+
+<p-dialog #popupsearch [(visible)]="displaypopuup" [modal]="true" [responsive]="true" [autoZIndex]="false" styleClass="mydialog">
+  <p-header>
+    Manage
+  </p-header>
+
+  <div class="container">
+    <br />
+    <div class="form-group row form-row">
+      <label class="col-md-1 col-form-label form-control-sm form-label">ศิลปิน</label>
+      <div class="col-md-5">
+        <input NextTab type="text" class="form-control form-control-sm"
+        [(ngModel)]="_singer">
+      </div>
+
+      <label class="col-md-1 col-form-label form-control-sm form-label">ชื่อเพลง</label>
+      <div class="col-md-5">
+        <input NextTab type="text" class="form-control form-control-sm"
+        [(ngModel)]="_songname">
+      </div>
+    </div>
+
+    <div class="form-group row form-row">
+      <label class="col-md-1 col-form-label form-control-sm form-label">link</label>
+      <div class="col-md-11">
+        <input NextTab type="text" class="form-control form-control-sm"
+        [(ngModel)]="_link">
+      </div>
+    </div>
+
+    <div class="row top-buffer" style="margin-bottom:10px;">
+      <div class="col-6">
+      </div>
+      <div class="col-6">
+        <button type="button" pButton label="Cancel" (click)="displaypopuup = false" style="float:right;margin-left: 10px;"></button>
+        <button type="button" pButton label="Ok" (click)="SaveSong()" style="float:right;"></button>
+      </div>
+    </div>
+  </div>
+</p-dialog>
+
+<ngx-spinner bdColor="rgba(51,51,51,0.5)" class="myspiner" size="mediem" color="#fff"
+  type={{this.apphelper.spinconfig.type}}>
+  <p style="font-size: 15px; color: white !important;">{{this.apphelper.spinconfig.message}}</p>
+</ngx-spinner>
+
+<p-confirmDialog header="Confirmation"></p-confirmDialog>

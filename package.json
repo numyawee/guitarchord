@@ -55,7 +55,7 @@
     "tslib": "^1.10.0",
     "underscore": "^1.9.1",
     "web-push": "^3.4.3",
-    "xlsx": "^0.14.5",
+    "xlsx": "^0.17.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

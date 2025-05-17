@@ -1,0 +1,284 @@
+/*Import nessesory css file*/
+
+/* @import "./assets/css/scrollbar.css" */
+
+/* You can add global styles to this file, and also import other style files */
+.textareaingrid-show {
+  height: 200px !important;
+}
+
+.textareaingrid-hide {
+  height: 30px !important;
+}
+
+.ui-dialog {
+  z-index: 12500 !important;
+}
+
+.ui-dialog-mask {
+  z-index: 12499 !important;
+}
+
+.ui-sidebar {
+  z-index: 12600 !important;
+}
+
+.ui-sidebar-mask {
+  z-index: 12599 !important;
+}
+
+/* .ui-sidebar {
+  z-index: 12000 !important;
+}
+
+.ui-sidebar-mask {
+  z-index: 11999 !important;
+} */
+
+.ui-dropdown-panel {
+  z-index: 13000 !important;
+}
+
+.ui-datepicker {
+  z-index: 13000 !important;
+}
+
+.fullwidth {
+  width: 100% !important;
+  min-width: 100% !important;
+}
+
+.searchtext {
+  margin-top: 2px !important;
+}
+
+.top-buffer {
+  margin-top: 10px;
+}
+
+.gridbuttonheader {
+  float: left;
+  margin-left: 5px !important;
+}
+
+.gridrowindex {
+  width: 50px !important;
+  text-align: right !important;
+  padding-right: 5px !important;
+}
+
+.gridtextmultirow {
+  vertical-align: top !important;
+  padding-bottom: 5.148px !important;  
+}
+
+.gridcheckbox {
+  width: 40px !important;
+  text-align: center !important;
+}
+
+.gridheader {
+  text-align: center;
+}
+
+.gridcenter {
+  text-align: center;
+}
+
+.gridright {
+  text-align: right;
+}
+
+.txt-center {
+  text-align: center;
+}
+
+.gridrow {
+  height: 5px !important;
+}
+
+/* lock ความสูง p-table
+::ng-deep p-table .ui-table {
+  min-height: 75vh;
+} */
+
+.inputWithIcon input[type="text"] {
+  padding-left: 40px;
+}
+
+.inputWithIcon {
+  position: relative;
+}
+
+.inputWithIcon i {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  padding: 4px 25px;
+  color: #aaa;
+  z-index: 1000;
+}
+
+.ui-widget {
+  font-size: 12px !important;
+}
+
+/* .form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+} */
+
+.form-control-placeholder {
+  font-size: 90%;
+  position: absolute;
+  top: 0;
+  padding: 4px 0 0 13px;
+  transition: all 200ms;
+  opacity: 0.5;
+}
+
+.form-control:focus+.form-control-placeholder,
+.form-control:valid+.form-control-placeholder {
+  font-size: 75%;
+  transform: translate3d(0, -130%, 0);
+  opacity: 1;
+}
+
+.form-row {
+  padding-left: 8px;
+}
+
+.form-label {
+  font-size: 12px;
+}
+
+.form-button {
+  min-width: 100px;
+}
+
+.form-button-next {
+  margin-left: 5px !important;
+}
+
+.form-control {
+  border-color: #AAAAAA;
+}
+
+.btn-search-icononly {
+  min-width: 32px !important;
+  width: 32px !important;
+}
+
+.btn-search-next {
+  margin-left: 5px;
+}
+
+.td-nowarp {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.row-bottom {
+  padding-bottom: 20px;
+}
+
+.myspiner /deep/ .black-overlay {
+  position: fixed !important;
+}
+
+.myspiner /deep/ .loading-text {
+  position: fixed !important;
+}
+
+.form-item-sub-show {
+  background-color: #F4F4F4;
+  padding: 15px;
+}
+
+.form-item-sub-hide {
+  background-color: #F4F4F4;
+  padding: 0px 15px 0px 15px;
+}
+
+.btn-close {
+  display: inline-block;
+  text-decoration: none;
+  background: red;
+  color: #FFF;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  transition: .4s;
+  font-size: 20px;
+}
+
+.btn-close:hover {
+  cursor: pointer;
+  background: #FA4C40;
+}
+
+.btn-close .fas {
+  line-height: 30px;
+  color: white;
+}
+
+.lb-validate {
+  color: red;
+}
+
+a.danger {
+  color: red;
+}
+
+a.abadge {
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
+
+a.abadgeclick {
+  cursor: pointer;
+}
+
+i.badge {
+  font-size: 20px;  
+}
+
+i.icon-danger {
+  color: red;
+}
+
+i.badge-small {
+  font-size: 15px;
+}
+
+i.icon-large {
+  font-size: 30px !important;
+}
+
+.mybadge-largeicon {
+  position: relative;
+  top: -15px;
+  left: -5px;
+  border-radius: 80px !important;
+  font-size: 12px !important;
+}
+
+.mybadge-largeicon-fixrow {
+  position: relative;
+  border-radius: 80px !important;
+  font-size: 12px !important;
+}
+
+.text-in-grid , .btn-in-grid {
+  height: 28px !important;
+}
+
+/* .tooltip-inner{
+  width:600px !important;
+  min-width: 600px !important;
+} */

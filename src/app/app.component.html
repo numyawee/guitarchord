@@ -1,0 +1,309 @@
+<div class="mainbg">
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#" aria-current="page" (click)="menuShow = 'chord'">Guitar Chord</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" (click)="menuShow = 'music';playAudio('')">Play List</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div [style.display]="menuShow != 'chord'? 'none' : 'block'">
+      <div id="content-wrapper">
+        <div class="container-fluid" style="padding-top: 5px;padding-left: 15px;">
+
+          <div class="row" style="margin-top: 15px;">
+            <div class="col-xl-11 col-lg-12 col-md-12 col-sm-12 col-12 input-group mb-3 inputWithIconSearch">
+              <div class="input-group-prepend ">
+                <i class="fa fa-search"></i>
+              </div>
+              <input type="text" [formControl]="searchField" class="form-control" placeholder="Search" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <p-table #GridData class="grid-main-height" [value]="ShowSongList()" [autoLayout]="false"
+                [scrollable]="true" scrollHeight="500px" selectionMode="single" dataKey="index"
+                [(selection)]="_selectItem">
+                <ng-template pTemplate="caption">
+                  <div class="ui-helper-clearfix">
+                    <button type="button" pButton icon="pi pi-plus" iconPos="left" label="Add" class="gridbuttonheader"
+                      (click)="Add()"></button>
+                    <button type="button" pButton icon="fa fa-ban" iconPos="left" label="Del"
+                      class="gridbuttonheader ui-button-danger" (click)="Del()"></button>
+                  </div>
+                </ng-template>
+
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th class="gridrowindex"></th>
+                    <th style="width:130px" class="gridheader">ศิลปิน</th>
+                    <th style="width:500px" class="gridheader">ชื่อเพลง</th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-item let-i="rowIndex">
+                  <tr [pSelectableRow]="item">
+                    <td class="gridrowindex">{{i + 1}}</td>
+                    <td style="width:130px" class="gridcenter">{{item.singer}}</td>
+                    <td style="width:500px" class="gridcenter">
+                      <a href="{{item.link}}" target="blank">{{item.songname}}</a>
+                    </td>
+                  </tr>
+                </ng-template>
+              </p-table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div [style.display]="menuShow != 'music'? 'none' : 'block'">
+
+      <div class="container mt-4">
+        <h2 class="mb-4">🎶 Music Playlists</h2>
+
+        <!-- Add Playlist -->
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" [(ngModel)]="newPlaylistName" placeholder="New Playlist Name" />
+          <button class="btn btn-primary" (click)="addPlaylist()">Add Playlist</button>
+        </div>
+
+        <!-- Now Playing -->
+        <div *ngIf="nowPlayingSong" class="now-playing alert alert-info d-flex align-items-center mb-3 p-3" role="alert"
+          style="border-radius: 8px;">
+          <i class="fas fa-music fa-2x" style="margin-right: 2rem; color: #0d6efd;"></i>
+          <div>
+            <div style="font-weight: 600; font-size: 1.25rem; line-height: 1.2;">
+              Now Playing : {{nowPlayingSong.playlistName}}
+            </div>
+            <div style="margin-right: 2rem; color: #0d6efd;font-weight: 400; font-size: 1.25rem; line-height: 1.2;">
+              {{ nowPlayingSong.title }} - {{ nowPlayingSong.compose }}
+            </div>
+          </div>
+        </div>
+
+        <div><audio #player style="width: 100%;" controls [src]="currentAudio"></audio>
+          <div>
+            <div class="d-flex justify-content-between align-items-center">
+              <!-- ฝั่งซ้าย -->
+              <div>
+                <button class="btn btn-success" (click)="playAllPlaylist()">Play All Playlist</button>
+              </div>
+
+              <!-- ฝั่งขวา -->
+              <div class="d-flex">
+                <button class="btn btn-outline-secondary btn-sm me-2" (click)="playBackSong()">
+                  <i class="fas fa-fast-backward"></i>
+                </button>
+                <button class="btn btn-outline-secondary btn-sm me-2" (click)="pauseSong()">
+                  <i class="fas fa-pause"></i>
+                </button>
+                <button class="btn btn-outline-secondary btn-sm me-2" (click)="stopSong()">
+                  <i class="fas fa-stop"></i>
+                </button>
+                <button class="btn btn-outline-secondary btn-sm me-2" (click)="continueSong()">
+                  <i class="fas fa-play"></i>
+                </button>
+                <button class="btn btn-outline-secondary btn-sm" (click)="playNextSong()">
+                  <i class="fas fa-fast-forward"></i>
+                </button>
+              </div>
+            </div>
+
+            <hr />
+
+            <div *ngIf="playlists.length === 0" class="text-muted">No playlists yet.</div>
+
+            <!-- Playlist Cards -->
+            <div class="row" style="padding-left: 15px;padding-right: 15px;">
+              <ul class="list-group" style="width: 100%;">
+                <li class="list-group-item d-flex flex-column" *ngFor="let playlist of playlists">
+                  <!-- Playlist Header -->
+                  <div class="d-flex justify-content-between align-items-center" style="cursor: pointer;"
+                    (click)="toggleExpand(playlist.id)">
+                    <div>
+                      <h5 class="mb-1">{{ playlist.name }}</h5>
+                      <small class="text-muted">{{ playlist.description }}</small>
+
+                      <span class="badge bg-primary rounded-pill" style="margin-right: 15px; font-size: large;">
+                        {{ playlist.songs?.length || 0 }} songs
+                      </span>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                      <button class="btn btn-primary btn-sm me-2" style="padding: 0.5rem 0.75rem;margin-right: 15px;"
+                        (click)="toggleAddSongForm(playlist.id); $event.stopPropagation()">
+                        <i class="fas fa-plus me-1" style="margin-right: 10px;"></i> Add Song
+                      </button>
+
+                      <button class="btn btn-success btn-sm me-2" style="padding: 0.5rem 0.75rem;margin-right: 15px;"
+                        (click)="playAllSongs(playlist); $event.stopPropagation()">
+                        <i class="fas fa-play me-1" style="margin-right: 10px;"></i> Play All Song
+                      </button>
+
+                      <button class="btn btn-danger btn-sm" style="padding: 0.5rem 0.75rem;"
+                        (click)="deletePlaylist(playlist); $event.stopPropagation()" title="Delete Playlist">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Inline Add Song Form -->
+                  <div [@expandCollapse]="showAddSongFormFor === playlist.id ? 'expanded' : 'collapsed'"
+                    class="mt-2 p-2 border rounded bg-light">
+
+                    <div>
+                      <div class="mb-2">
+                        <label>ชื่อเพลง</label>
+                        <input class="form-control" [(ngModel)]="newSong.title">
+                      </div>
+                      <div class="mb-2">
+                        <label>ผู้แต่ง / นักร้อง</label>
+                        <input class="form-control" [(ngModel)]="newSong.compose">
+                      </div>
+                      <div class="mb-2">
+                        <label>ลิงก์เพลง</label>
+                        <input class="form-control" [(ngModel)]="newSong.url">
+                      </div>
+                      <button class="btn btn-success btn-sm me-2"
+                        (click)="saveSongToPlaylist(playlist.id)">เพิ่มเพลง</button>
+                      <button class="btn btn-secondary btn-sm" (click)="cancelAddSongForm()">ยกเลิก</button>
+                    </div>
+
+                  </div>
+
+                  <!-- Expand Songs -->
+                  <div [@expandCollapse]="expandedPlaylistId === playlist.id ? 'expanded' : 'collapsed'"
+                    *ngIf="playlist.songs && playlist.songs.length > 0">
+                    <ul class="list-group">
+                      <li class="list-group-item" *ngFor="let song of playlist.songs; let i = index">
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div>
+                            🎵 {{ song.title }} - {{ song.compose }}
+                          </div>
+                          <div>
+                            <button class="btn btn-outline-secondary btn-sm me-2" (click)="playAllSongs(playlist, i)">
+                              <i class="fas fa-play"></i>
+                            </button>
+                            <button class="btn btn-outline-danger btn-sm" (click)="deleteSong(playlist.id, song.id)">
+                              <i class="fas fa-trash"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+
+              <!-- <div class="col-md-6 mb-4" *ngFor="let playlist of playlists"> -->
+              <!-- <div class="card">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <strong>{{ playlist.name }}</strong>
+                <button class="btn btn-sm btn-danger" (click)="deletePlaylist(playlist.id)">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <input type="text" class="form-control mb-1" [(ngModel)]="playlist.newSongTitle"
+                    placeholder="Song title" />
+                  <input type="text" class="form-control mb-1" [(ngModel)]="playlist.newSongComposer"
+                    placeholder="Composer" />
+                  <input type="text" class="form-control mb-2" [(ngModel)]="playlist.newSongUrl"
+                    placeholder="Song URL" />
+                  <button class="btn btn-sm btn-success" (click)="addSong(playlist)">Add Song</button>
+                </div>
+
+                <button class="btn btn-success" (click)="playAllSongs(playlist)">Play All Songs</button>
+
+                <ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between align-items-center"
+                    *ngFor="let song of playlist.songs">
+                    <div>
+                      <strong>{{ song.title }}</strong><br />
+                      <small class="text-muted">{{ song.composer }}</small>
+                    </div>
+                    <div>
+                      <a [href]="song.url" target="_blank" class="btn btn-sm btn-outline-primary me-2">
+                        <i class="fas fa-play"></i>
+                      </a>
+                      <button class="btn btn-sm btn-outline-danger" (click)="deleteSong(playlist.id, song.id)">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </div>
+                  </li>
+                </ul>
+
+              </div>
+            </div> -->
+              <!-- </div> -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <br />
+
+    <p-dialog #popupsearch [(visible)]="displaypopuup" [modal]="true" [responsive]="true" [autoZIndex]="false"
+      styleClass="mydialog">
+      <p-header>
+        Manage
+      </p-header>
+
+      <div class="container">
+        <br />
+        <div class="form-group row form-row">
+          <label class="col-md-1 col-form-label form-control-sm form-label">ศิลปิน</label>
+          <div class="col-md-5">
+            <input NextTab type="text" class="form-control form-control-sm" [(ngModel)]="_singer">
+          </div>
+
+          <label class="col-md-1 col-form-label form-control-sm form-label">ชื่อเพลง</label>
+          <div class="col-md-5">
+            <input NextTab type="text" class="form-control form-control-sm" [(ngModel)]="_songname">
+          </div>
+        </div>
+
+        <div class="form-group row form-row">
+          <label class="col-md-1 col-form-label form-control-sm form-label">link</label>
+          <div class="col-md-11">
+            <input NextTab type="text" class="form-control form-control-sm" [(ngModel)]="_link">
+          </div>
+        </div>
+
+        <div class="row top-buffer" style="margin-bottom:10px;">
+          <div class="col-6">
+          </div>
+          <div class="col-6">
+            <button type="button" pButton label="Cancel" (click)="displaypopuup = false"
+              style="float:right;margin-left: 10px;"></button>
+            <button type="button" pButton label="Ok" (click)="SaveSong()" style="float:right;"></button>
+          </div>
+        </div>
+      </div>
+    </p-dialog>
+
+    <ngx-spinner bdColor="rgba(51,51,51,0.5)" class="myspiner" size="mediem" color="#fff"
+      type={{this.apphelper.spinconfig.type}}>
+      <p style="font-size: 15px; color: white !important;">{{this.apphelper.spinconfig.message}}</p>
+    </ngx-spinner>
+
+    <p-confirmDialog header="Confirmation"></p-confirmDialog>
+    <p-toast></p-toast>

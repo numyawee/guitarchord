@@ -1,0 +1,14 @@
+local
+
+{
+  "apiuserurl": "http://192.168.5.38:81/IUserControlAPI/api/",
+  "apiurl": "http://localhost:49003/api/"
+}
+
+
+server
+
+{
+  "apiuserurl": "http://services.vinno.co.th:85/IUserControlAPI/api/",
+  "apiurl": "http://remote.vinno.co.th:49003/api/"
+}

@@ -1,0 +1,38 @@
+#ddlCondition {
+  height: 100% !important;
+}
+
+.inputWithIconSearch input[type="text"]:focus+i {
+  color: dodgerblue;
+}
+
+.inputWithIconSearch input[type="text"] {
+  padding-left: 5px;
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+.inputWithIconSearch {
+  position: relative;
+}
+
+.inputWithIconSearch i {
+  position: absolute;
+  right: 0;
+  top: 8px;
+  padding: 4px 25px;
+  color: #aaa;
+  z-index: 1000;
+}
+
+.inputWithIconSearch input[type="text"]:focus+i {
+  color: dodgerblue;
+}
+
+.mydialog {
+  width: 90vw;
+}
+
+button.btn + button.btn {
+  margin-left: 8px; /* ปรับขนาดช่องว่างตามต้องการ */
+}

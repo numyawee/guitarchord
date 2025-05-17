@@ -1,0 +1,112 @@
+{
+  "configVersion": 1,
+  "timestamp": 1747467945096,
+  "index": "/guitarchord/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/guitarchord/favicon.ico",
+        "/guitarchord/index.html",
+        "/guitarchord/main-es2015.c65482bc42fe2feaa937.js",
+        "/guitarchord/main-es5.c65482bc42fe2feaa937.js",
+        "/guitarchord/polyfills-es2015.1e79bc0ab0055bcd170f.js",
+        "/guitarchord/polyfills-es5.7af52e3d3cb492f75ba5.js",
+        "/guitarchord/runtime-es2015.0811dcefd377500b5b1a.js",
+        "/guitarchord/runtime-es5.0811dcefd377500b5b1a.js",
+        "/guitarchord/scripts.430ac2982bf370573c19.js",
+        "/guitarchord/styles.d75bdc4d9942bd4180f5.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/guitarchord/assets/css/hamburgers.css",
+        "/guitarchord/assets/css/jquery.mCustomScrollbar.css",
+        "/guitarchord/assets/css/scrollbar.css",
+        "/guitarchord/assets/icons/icon-128x128.png",
+        "/guitarchord/assets/icons/icon-144x144.png",
+        "/guitarchord/assets/icons/icon-152x152.png",
+        "/guitarchord/assets/icons/icon-192x192.png",
+        "/guitarchord/assets/icons/icon-384x384.png",
+        "/guitarchord/assets/icons/icon-512x512.png",
+        "/guitarchord/assets/icons/icon-72x72.png",
+        "/guitarchord/assets/icons/icon-96x96.png",
+        "/guitarchord/assets/images/7057ad329e8b094.jpg",
+        "/guitarchord/assets/images/avatar_2x.png",
+        "/guitarchord/assets/images/document-tracker.jpg",
+        "/guitarchord/assets/images/hint-img.png",
+        "/guitarchord/assets/images/index-and-full-text-searching-documents.png",
+        "/guitarchord/assets/images/lgBackgroundImg.png",
+        "/guitarchord/assets/images/mCSB_buttons.png",
+        "/guitarchord/assets/images/menu/mastermenugroup.png",
+        "/guitarchord/assets/images/rain.png",
+        "/guitarchord/assets/images/selectbranch.jpg",
+        "/guitarchord/assets/js/ghostscript.js",
+        "/guitarchord/assets/js/jquery.mCustomScrollbar.concat.min.js",
+        "/guitarchord/assets/song.json"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/guitarchord/assets/css/hamburgers.css": "1090838fcc23dce06152756f4a38b5ee018770e2",
+    "/guitarchord/assets/css/jquery.mCustomScrollbar.css": "4c19cb60fe98c507e10e9a28197249f12a7a9f5a",
+    "/guitarchord/assets/css/scrollbar.css": "c654c7c849b6289b31143984aa17500ba568c8ee",
+    "/guitarchord/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
+    "/guitarchord/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
+    "/guitarchord/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
+    "/guitarchord/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
+    "/guitarchord/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
+    "/guitarchord/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/guitarchord/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/guitarchord/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/guitarchord/assets/images/7057ad329e8b094.jpg": "2dd934c8b63f5a96fb21da6e7b0da723bf7175b8",
+    "/guitarchord/assets/images/avatar_2x.png": "2b2394121d8e3e6526f1b6f686e49d61023a0c3f",
+    "/guitarchord/assets/images/document-tracker.jpg": "32531247b66084ec7528f174d8fd0dd00486678a",
+    "/guitarchord/assets/images/hint-img.png": "290b54ecbd3ac1246245cb120617c09da54ab6e4",
+    "/guitarchord/assets/images/index-and-full-text-searching-documents.png": "9c634a295979de5f8f16b181d5b375ceaa472e38",
+    "/guitarchord/assets/images/lgBackgroundImg.png": "dd4fc45d66fe2711c4d8ca639a14388149ea0e2f",
+    "/guitarchord/assets/images/mCSB_buttons.png": "5f8baeae37b80980c7a1e88b206375da55947ce2",
+    "/guitarchord/assets/images/menu/mastermenugroup.png": "1da6aae593be13990fee6729e7bdfd17378637a1",
+    "/guitarchord/assets/images/rain.png": "b5731c31ae1af0b615a995fec2da1addaeecbf71",
+    "/guitarchord/assets/images/selectbranch.jpg": "5a160753b5b843983ad64f606130318335cd58de",
+    "/guitarchord/assets/js/ghostscript.js": "9777f798a12020c559fdac99095d0c91915704b9",
+    "/guitarchord/assets/js/jquery.mCustomScrollbar.concat.min.js": "70b2b29b138b9ddcdcbb58bd5d825f780eadcdfa",
+    "/guitarchord/assets/song.json": "9fb8a6b410fd1ce9f78c888d0d8eb21a013be470",
+    "/guitarchord/favicon.ico": "26b5e788e8a98255f3f4d24de1c81df12b150452",
+    "/guitarchord/index.html": "bc2d4cf2738df5ce1d59fca54d6282b1230fb2c9",
+    "/guitarchord/main-es2015.c65482bc42fe2feaa937.js": "098bc0182a55586b2e29a45ae0c8cd3bf9739f2c",
+    "/guitarchord/main-es5.c65482bc42fe2feaa937.js": "153afb0f9120d9df75c0e13d4188f22493f27677",
+    "/guitarchord/polyfills-es2015.1e79bc0ab0055bcd170f.js": "3f4f6f4509666a74504d0454853b7d5945b200f3",
+    "/guitarchord/polyfills-es5.7af52e3d3cb492f75ba5.js": "fc47b1bfc383a2dbfc4801543eae50f945ed82a5",
+    "/guitarchord/runtime-es2015.0811dcefd377500b5b1a.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/guitarchord/runtime-es5.0811dcefd377500b5b1a.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/guitarchord/scripts.430ac2982bf370573c19.js": "8a0a8c113668f3d56b31bb75be3d1839b20f35ea",
+    "/guitarchord/styles.d75bdc4d9942bd4180f5.css": "682eda1cb6d8f0f034cc4017cf5d1f10e4c3287d"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ]
+}
